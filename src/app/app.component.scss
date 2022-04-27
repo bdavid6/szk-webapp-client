@@ -1,0 +1,56 @@
+.grid {
+    //margin-right: calc(100% - 100vw);
+    width: calc(100vw - 17px);
+    min-width: 1120px;
+}
+
+.header {
+    max-width: 100%;
+    min-width: 1120px;
+    height: 80px;
+    color: #3F51B5;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.250);
+}
+
+.title {
+    margin-left: 20%;
+    font-size: x-large;
+    cursor: pointer;
+    color: #3F51B5;
+}
+
+.mat-icon {
+    color: #3F51B5;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    transform: scale(1.4);
+    cursor: pointer;
+}
+
+.button-row {
+    margin-right: 20%;
+    margin-left: auto;
+}
+
+.mat-button {
+    color: gray;
+    font-size: large;
+    font-weight: lighter;
+}
+
+.menu-button {
+    color: #3F51B5;
+}
+
+.mat-menu-item {
+    color: gray;
+    font-size: large;
+    font-weight: lighter;
+}
+
+.grid-body {
+    max-width: 60%;
+    margin-top: 6%;
+    margin-left: 20%;
+    margin-right: 20%;
+}

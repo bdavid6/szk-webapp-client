@@ -1,0 +1,51 @@
+.text {
+    max-width: 100%;
+    min-width: 800px;
+    margin-left: 10%;
+    text-align: left;
+
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    line-height: 1.05;
+
+    font-weight: lighter;
+    font-size: xx-large;
+    font-style: italic;
+}
+
+.first-line {
+    margin-bottom: 15px;
+}
+
+.second-line {
+    text-indent: 20px;
+}
+
+.third-line {
+    text-indent: 35px;
+}
+
+mark {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+
+b {
+    color: #3F51B5;
+}
+
+.thin-bold {
+    font-weight: 500;
+}
+
+.alt-search {
+    margin-top: 100px;
+    max-width: 100%;
+    min-width: 880px;
+    height: 600px;
+}
+
+.mat-grid-tile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}

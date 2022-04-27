@@ -1,0 +1,24 @@
+<h1>Szállás kiadása</h1>
+<form (submit)="submit($event)">
+    <mat-form-field appearance="fill">
+        <mat-label>Név</mat-label>
+        <input matInput type="text" name="name" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Hely</mat-label>
+        <input matInput type="text" name="place" required>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Leírás</mat-label>
+        <textarea matInput name="label" required></textarea>
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Kép</mat-label>
+        <input matInput type="text" name="mainImage">
+    </mat-form-field>
+    <br>
+    <button mat-button color="accent">Elküldés</button>
+</form>
