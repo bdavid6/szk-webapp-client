@@ -1,17 +1,17 @@
 <div class="grid">
-    <mat-toolbar class="header" color="primary">
+    <mat-toolbar class="header" color="accent">
 
         <span class="title" routerLink="/">Szálláskereső</span>
         <mat-icon routerLink="/" aria-hidden="true" aria-label="Home icon">home</mat-icon>
         <div class="button-row">
             <button mat-button [matMenuTriggerFor]="menu" class="menu-button">Partnereknek</button>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="/new_accommodation">Új szállás felvétele </button>
+                <button mat-menu-item routerLink="/new-accommodation">Új szállás felvétele </button>
                 <button mat-menu-item>Szállások kezelése</button>
                 <button mat-menu-item routerLink="/information">Információk</button>
             </mat-menu>
             <button mat-button>Lefoglalt szállások</button>
-            <button mat-button>Bejelentkezés</button>
+            <button mat-button routerLink="/auth/login">Bejelentkezés</button>
         </div>
     </mat-toolbar>
 

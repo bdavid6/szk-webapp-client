@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Accommodation } from '../core/interfaces/accommodation';
+import { Tag } from '../core/interfaces/tag';
+import { AccommodationService } from '../core/services/accommodation.service';
 
 @Component({
   selector: 'app-accommodations',
@@ -8,23 +10,13 @@ import { Accommodation } from '../core/interfaces/accommodation';
 })
 export class AccommodationsComponent implements OnInit {
 
-  accommodations: Accommodation[] = [
-    {
-      name: 'Valami Hotel',
-      place: 'Budapest',
-      label: 'Valamiféle leirás',
-      mainImage: "/assets/img/noimage.png",
-    }, {
-      name: 'Szálloda Hatvan',
-      place: 'Hatvan',
-      label: 'Kis város',
-      mainImage: "/assets/img/bg.jpg",
-    }
-  ];
+  accommodations!: Accommodation[];
 
-  constructor() { }
+  constructor(
+    private as: AccommodationService,
+  ) { }
 
   ngOnInit(): void {
+    this.accommodations = this.as.getAccommodations();
   }
-
 }

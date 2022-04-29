@@ -8,6 +8,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +22,11 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { HomeComponent } from './home/home.component';
 import { InformationComponent } from './information/information.component';
 import { CreateAccommodationComponent } from './create-accommodation/create-accommodation.component';
+import { DatePipe } from '@angular/common';
+import { AccommodationDetailsComponent } from './accommodation-details/accommodation-details.component';
+import { ErrorsPipe } from './core/pipes/errors.pipe';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +35,11 @@ import { CreateAccommodationComponent } from './create-accommodation/create-acco
     SearchBarComponent,
     HomeComponent,
     InformationComponent,
-    CreateAccommodationComponent
+    CreateAccommodationComponent,
+    AccommodationDetailsComponent,
+    ErrorsPipe,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,9 +52,14 @@ import { CreateAccommodationComponent } from './create-accommodation/create-acco
     MatMenuModule,
     MatCardModule,
     MatGridListModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
