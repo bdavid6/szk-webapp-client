@@ -1,5 +1,6 @@
 <mat-toolbar class="search-bar-container">
     <mat-toolbar class="search-bar">
-        <button mat-button class="search-button" routerLink="/accommodations">Keresés</button>
+        <input matInput type="text" name="search" onfocus="this.select()" placeholder="Írja be az úticélt" [(ngModel)]="filterText"/>
+        <button mat-button class="search-button" [routerLink]="['/', 'accommodations', filterText]" (click)="clearSearch()">Keresés</button>
     </mat-toolbar>
 </mat-toolbar>

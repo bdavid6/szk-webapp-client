@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  filterText: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  clearSearch() {
+    this.filterText = '';
+  }
 }

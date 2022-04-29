@@ -11,9 +11,9 @@ export class NotificationService {
   ) { }
 
   //style: 0 -> normal, style: 1? -> error
-  public showNotification(style: number, message: any): void {
+  public showNotification(style: number, message: any, duration: number): void {
     let config = new MatSnackBarConfig();
-    config.duration = 1000;
+    config.duration = duration;
     if(style == 0) {config.panelClass= ["normal"];}
     else {config.panelClass= ["error"];}
     this.snackBar.open(message, 'X', config);

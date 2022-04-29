@@ -45,9 +45,9 @@ export class CreateAccommodationComponent implements OnInit {
       await this.as.createAccommodation(this.accommodationForm.value);
 
       this.clearForm();
-      this.ns.showNotification(0, "Sikeres elküldés")
+      this.ns.showNotification(0, "Sikeres elküldés", 1000);
     } else {
-      this.ns.showNotification(1, "Sikertelen elküldés")
+      this.ns.showNotification(1, "Sikertelen elküldés", 1000);
     }
   }
 
@@ -58,5 +58,5 @@ export class CreateAccommodationComponent implements OnInit {
           'label': '',
           'mainImage': '"src/assets/img/bg.jpg"'
          });
-    }
+  }
 }
