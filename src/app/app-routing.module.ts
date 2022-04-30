@@ -11,9 +11,9 @@ import { InformationComponent } from './information/information.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'accommodations', component: AccommodationsComponent},
+  {path: 'search/:pageId', component: AccommodationsComponent},
+  {path: 'search/filter/:filterText/:pageId', component: AccommodationsComponent},
   {path: 'accommodations/id/:accommodationId', component: AccommodationDetailsComponent},
-  {path: 'accommodations/:filterText', component: AccommodationsComponent},
   {path: 'new-accommodation', component: CreateAccommodationComponent, canActivate: [AuthGuard]},
   {path: 'information', component: InformationComponent},
   {path: 'auth/login', component: LoginComponent},

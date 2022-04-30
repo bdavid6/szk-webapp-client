@@ -58,6 +58,10 @@ button {
     color: white;
 }
 
+.disabled {
+    background-color: #F5F5F5;
+}
+
 .mat-toolbar {
     max-width: 155px;
     min-width: 155px;
@@ -87,4 +91,8 @@ button {
     background-color: #F5F5F5;
     color:red;
     font-weight: 500;
+}
+
+mat-tooltip-component {
+    transform: scale(1.5);
 }
