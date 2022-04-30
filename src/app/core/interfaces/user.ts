@@ -2,12 +2,12 @@ import { Accommodation } from "./accommodation";
 import { Reservation } from "./reservation";
 
 export interface User {
-    id: number;
+    id?: number;
     username: string;
-    password: string;
-    role: Role;
+    password?: string;
     name: string;
     e_mail: string;
+    role: Role;
     accommodations: Accommodation[];
     reservations: Reservation[];
 }

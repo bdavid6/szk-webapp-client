@@ -7,8 +7,8 @@
 }
 
 .search-bar {
-    max-width: 60%;
-    min-width: 880px;
+    max-width: 40%;
+    min-width: 380px;
     height: 70px;
     margin-left: 20%;
     background-color: white;
@@ -29,9 +29,22 @@
     margin-inline-start: auto;
 }
 
+.search-button-alternative {
+    max-width: 195px;
+    min-width: 195px;
+    margin-left: 3px;
+    height: 70px;
+    background-color: #3F51B5;
+    border: 1px solid black;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+    color: white;
+    font-size: medium;
+    text-indent: -7px;
+}
+
 input {
     max-width: 50%;
-    min-width: 720px;
+    min-width: 300px;
     height: 63px;
     border: 0px;
 

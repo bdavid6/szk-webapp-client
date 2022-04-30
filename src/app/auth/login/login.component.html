@@ -1,1 +1,33 @@
-<p>login works!</p>
+<h1>Bejelentkezés</h1>
+
+<form [formGroup]="form" (submit)="submitLogin()">
+  <mat-form-field appearance="fill">
+    <mat-label>Felhasználó név</mat-label>
+    <input
+      required
+      matInput
+      type="text"
+      name="username"
+      formControlName="username"
+    />
+    <mat-error *ngIf="username.invalid">
+        {{ username.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Jelszó</mat-label>
+    <input
+      required
+      matInput
+      type="password"
+      name="password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="password.invalid">
+        {{ password.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Belépés</button>
+  </div>
+</form>

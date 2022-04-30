@@ -1,8 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Accommodation } from '../interfaces/accommodation';
 import { Reservation } from '../interfaces/reservation';
 import { Tag } from '../interfaces/tag';
+import { Role } from '../interfaces/user';
 import { NotificationService } from './notification.service';
 
 @Injectable({
@@ -10,34 +12,14 @@ import { NotificationService } from './notification.service';
 })
 export class AccommodationService {
 
-  private accommodations: Accommodation[] = [
-    {
-      id: 1,
-      name: 'Valami Hotel',
-      place: 'Budapest',
-      label: 'Valamiféle leirás',
-      mainImage: "/assets/img/noimage.png",
-    }, {
-      id: 2,
-      name: 'Szálloda Hatvan',
-      place: 'Hatvan',
-      label: 'Kis város',
-      mainImage: "/assets/img/bg.jpg",
-    },
-    {
-      id: 3,
-      name: 'Masodik bp',
-      place: 'Budapest',
-      label: 'Kis város',
-      mainImage: "/assets/img/bg.jpg",
-    },
-  ];
+  private accommodations: Accommodation[] = [];
 
   private reservations: Reservation[] = [];
 
   constructor(
     private router: Router,
     private ns: NotificationService,
+    private httpClient: HttpClient
   ) { }
 
   getAccommodations(filterText: string): Accommodation[] {
@@ -81,6 +63,10 @@ export class AccommodationService {
 
   getReservations(): Reservation[] {
     return this.reservations;
+  }
+
+  getAccommodationsLength(): number {
+    return this.accommodations.length;
   }
 
   /*async reserveAccommodation(start: string, end: string): Promise<Reservation> {

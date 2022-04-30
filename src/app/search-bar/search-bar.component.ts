@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AccommodationService } from '../core/services/accommodation.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -10,7 +12,12 @@ export class SearchBarComponent implements OnInit {
 
   filterText: string = '';
 
-  constructor() { }
+  random!: number;
+
+  constructor(
+    private as: AccommodationService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +25,21 @@ export class SearchBarComponent implements OnInit {
   clearSearch() {
     this.filterText = '';
   }
+
+  randomId(): void {
+    if (this.as.getAccommodationsLength() == 0) {
+      this.router.navigate(['/accommodations']);
+    } else if (this.as.getAccommodationsLength() == 1) {
+      this.router.navigate(['/accommodations/id/' + 1]);
+    } else {
+      let x = Math.floor((Math.random() * this.as.getAccommodationsLength()) + 1);
+      while (this.random == x) {
+        x = Math.floor((Math.random() * this.as.getAccommodationsLength()) + 1);
+      }
+      this.random = x;
+      this.router.navigate(['/accommodations/id/' + x]);
+    }
+  }
+
+
 }
