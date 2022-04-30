@@ -11,17 +11,14 @@ import { AccommodationService } from '../core/services/accommodation.service';
 })
 export class AccommodationsComponent implements OnInit {
 
-  accommodations!: Accommodation[];
-
-  private filterText: string = '';
+  accommodations!: Promise<Accommodation[]>;
 
   constructor(
     private as: AccommodationService,
     private route: ActivatedRoute,
-  ) { 
+  ) {
     route.paramMap.subscribe(params => {
       const filterText = params.get('filterText')!;
-      this.filterText = filterText;
       this.accommodations = this.as.getAccommodations(filterText);
     })
   }

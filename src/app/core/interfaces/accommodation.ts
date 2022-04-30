@@ -7,12 +7,12 @@ export interface Accommodation {
     name: string;
     place: string;
     description: string;
-    technicalDescription: string;
-    adultPrice: number;
-    childPrice: number;
+    technical_description: string;
+    adult_price: number;
+    child_price: number;
     reserved: boolean;
     confirmed: boolean;
     tags: Tag[]; 
-    user: User;
+    user: User; //id
     reservations: Reservation[];
 }

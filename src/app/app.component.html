@@ -4,7 +4,7 @@
         <span class="title" routerLink="/">Szálláskereső</span>
         <mat-icon routerLink="/" aria-hidden="true" aria-label="Home icon">home</mat-icon>
         <div class="button-row">
-            <button *ngIf="isLoggedIn && !isAdmin" mat-button [matMenuTriggerFor]="adminmenu" class="admin-menu-button">Admin</button>
+            <button *ngIf="isLoggedIn && isAdmin" mat-button [matMenuTriggerFor]="adminmenu" class="admin-menu-button">Admin</button>
             <mat-menu #adminmenu="matMenu">
                 <button mat-menu-item>Új szállások ellenőrzése</button>
                 <button mat-menu-item>Népszerű úticélok beállítása</button>

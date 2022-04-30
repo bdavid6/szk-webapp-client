@@ -6,7 +6,7 @@
     <span>Szűrés:</span>
   </mat-toolbar>-->
 
-  <mat-card class="accommodation-card" *ngFor="let acco of accommodations">
+  <mat-card class="accommodation-card" *ngFor="let acco of (accommodations | async)">
     <img class="main-image" src="src/assets/img/noimage.jpg">
     <mat-card-header>
       <mat-card-title>{{ acco.name }}</mat-card-title>
