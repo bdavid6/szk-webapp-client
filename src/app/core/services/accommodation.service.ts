@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { Accommodation } from '../interfaces/accommodation';
 import { Reservation } from '../interfaces/reservation';
 import { NotificationService } from './notification.service';
@@ -12,39 +11,61 @@ export class AccommodationService {
 
   private accommodations: Accommodation[] = [];
 
-  public idArray: number[] = [];
+  private idArray: number[] = [];
 
-  public allAccommodations!: number;
+  public countAccommodations!: number;
 
   private reservations: Reservation[] = [];
 
   constructor(
-    private router: Router,
     private ns: NotificationService,
     private http: HttpClient
   ) { }
 
-  get getIdArray(): number[] {
-    return this.idArray;
-  }
+  async getAccommodations(page: number): Promise<Accommodation[]> {
+    this.accommodations = await this.http.get('/api/search/all').toPromise()
+    .catch((error: any) => {
+      console.log(error);
+    }) as Accommodation[];
 
-  async getAccommodations(filterText: number): Promise<Accommodation[]> {
-    this.accommodations = await this.http.get('/api/search/all').toPromise() as Accommodation[];
-    this.allAccommodations = 0;
+    this.countAccommodations = 0;
     let x = 0
     for (let i = 0; i < this.accommodations.length; i++) {
       x++;
     }
-    this.allAccommodations = x;
-    console.log(this.allAccommodations)
+    this.countAccommodations = x;
 
-    this.accommodations = await this.http.get('/api/search/' + filterText).toPromise() as Accommodation[];
+    this.accommodations = await this.http.get('/api/search/' + page).toPromise()
+    .catch((error: any) => {
+      console.log(error);
+    }) as Accommodation[];
+
     this.idArray = [];
     for (let i = 0; i < this.accommodations.length; i++) {
       this.idArray.push(this.accommodations[i].id);
     }
+    return this.accommodations;
+  }
 
+  async getFilteredAccommodations(page: number, filterText: string): Promise<Accommodation[]> {
+    const modifiedFilterText = filterText.charAt(0).toUpperCase() + filterText.slice(1).toLowerCase();
+    this.accommodations = await this.http.get('/api/search/filter/'+ modifiedFilterText +'/all').toPromise()
+    .catch((error: any) => {
+      console.log(error);
+    }) as Accommodation[];
 
+    this.countAccommodations = 0;
+    let x = 0
+    for (let i = 0; i < this.accommodations.length; i++) {
+      x++;
+    }
+    this.countAccommodations = x;
+
+    this.accommodations = await this.http.get('/api/search/filter/'+ modifiedFilterText + '/' + page).toPromise() as Accommodation[];
+    this.idArray = [];
+    for (let i = 0; i < this.accommodations.length; i++) {
+      this.idArray.push(this.accommodations[i].id);
+    }
     /*if (this.accommodations.length == 0) {
       this.accommodations = await this.http.get('/api/search/1').toPromise() as Accommodation[];
       this.idArray = [];
@@ -56,26 +77,24 @@ export class AccommodationService {
     return this.accommodations;
   }
 
-  /*async getAccommodations(filterText: string): Promise<Accommodation[]> {
-    this.accommodations = await this.http.get('/api/search/filter/' + filterText).toPromise() as Accommodation[];
+  async getAccommodation(accommodationId: number): Promise<Accommodation> {
+    return (await this.http.get('/api/accommodations/' + accommodationId).toPromise()
+    .catch((error: any) => {
+      console.log(error);
+    }) as Accommodation);
+  }
+
+  async getIdArray(): Promise<number[]> {
+    this.accommodations = await this.http.get('/api/search/all').toPromise()
+    .catch((error: any) => {
+      console.log(error);
+    }) as Accommodation[];
 
     this.idArray = [];
     for (let i = 0; i < this.accommodations.length; i++) {
       this.idArray.push(this.accommodations[i].id);
     }
-
-    if (this.accommodations.length == 0) {
-      this.accommodations = await this.http.get('/api/search/').toPromise() as Accommodation[];
-      this.idArray = [];
-      for (let i = 0; i < this.accommodations.length; i++) {
-        this.idArray.push(this.accommodations[i].id);
-      }
-    }
-    return this.accommodations;
-  }*/
-
-  getAccommodation(accommodationId: number): Accommodation {
-    return this.accommodations.find((accommodation) => accommodation.id === accommodationId)!;
+    return this.idArray;
   }
 
   createAccommodation(accommodation: Accommodation): void {

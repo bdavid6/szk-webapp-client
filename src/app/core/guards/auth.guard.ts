@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
   ): boolean {
     if (!this.ahs.isLoggedIn) {
       this.ns.showNotification(1, "Hozzáférés megtagadva", 1000);
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/auth']);
     }
     return this.ahs.isLoggedIn;
   }

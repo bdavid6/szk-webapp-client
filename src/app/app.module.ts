@@ -15,7 +15,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,6 +32,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ErrorsPipe } from './core/errors.pipe';
 import { AuthInterceptor } from './core/auth.interceptor';
+import { FilterAccommodationsComponent } from './filter-accommodations/filter-accommodations.component';
+import { AuthComponent } from './auth/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { AuthInterceptor } from './core/auth.interceptor';
     LoginComponent,
     RegisterComponent,
     ErrorsPipe,
+    FilterAccommodationsComponent,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,8 @@ import { AuthInterceptor } from './core/auth.interceptor';
     MatSnackBarModule,
     FormsModule,
     HttpClientModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDividerModule
   ],
   providers: [
     {

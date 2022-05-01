@@ -3,7 +3,10 @@
     <dl>
         <dt><em>1.</em> regisztráljon majd jelentkezzen be</dt>
         <dt><em>2.</em> töltse ki a szükséges kérdőívet</dt>
-        <dd><em>-</em> ezt <mark routerLink="/new-accommodation">ide kattintva</mark> vagy a <b class="thin-bold">Partnereknek</b> menüben tudja elérni</dd>
+        <dd><em>-</em> ezt 
+            <mark *ngIf="isLoggedIn" routerLink="/new-accommodation">ide kattintva</mark>
+            <mark *ngIf="!isLoggedIn" routerLink="/auth">ide kattintva</mark>
+             vagy a <b class="thin-bold">Partnereknek</b> menüben tudja elérni</dd>
         <dt><em>3.</em> véglegesítse a meghirdetést az "Elküldés" gombra kattintva</dt>
         <dd><em>-</em> a hirdetés ellenőrzése és elfogadása után Ön hivatalosan is <b>Partner</b> lesz</dd>
     </dl>

@@ -1,10 +1,9 @@
 <mat-toolbar class="search-bar-container">
     <mat-toolbar class="search-bar">
-        <input matInput type="text" name="search" onfocus="this.select()" placeholder="Írja be az úticélt" [(ngModel)]="filterText"/>
-        <button *ngIf="!filterText" mat-button class="search-button" [routerLink]="['search/' + 1]" (click)="clearSearch()">Keresés</button>
-        <button *ngIf="filterText" mat-button class="search-button" [routerLink]="['search/filter/' + filterText]" (click)="clearSearch()">Keresés</button>
+        <input matInput type="text" name="search" onfocus="this.select()" placeholder="Írja be az úticélt" [(ngModel)]="searchText"/>
+        <button *ngIf="!searchText" mat-button class="search-button" [routerLink]="['search/1']" (click)="clearSearch()">Keresés</button>
+        <button *ngIf="searchText" mat-button class="search-button" [routerLink]="['search/filter/' + formatSearchText() + '/1']" (click)="clearSearch()">Keresés</button>
     </mat-toolbar>
     <button mat-button class="search-button-alternative">Legkedveltebb szállások</button>
-    <!--<button mat-button class="search-button-alternative" [routerLink]="['/', 'accommodations']" (click)="randomId()">Válassz nekem!</button>-->
     <button mat-button class="search-button-alternative" (click)="randomId()">Válassz nekem!</button>
 </mat-toolbar>

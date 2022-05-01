@@ -10,22 +10,24 @@ import { AccommodationService } from '../core/services/accommodation.service';
 })
 export class AccommodationDetailsComponent implements OnInit {
 
-  accommodation!: Accommodation;
-
-  private accommodationId: number = 0;
+  accommodation?: Accommodation;
 
   constructor(
     private as: AccommodationService,
     private route: ActivatedRoute,
   ) {
-    route.paramMap.subscribe(params => {
-      const accommodationId = parseInt(params.get('accommodationId')!);
-      this.accommodationId = accommodationId;
-      this.accommodation = this.as.getAccommodation(accommodationId);
-    })
+      this.route.paramMap.subscribe(async params => {
+        const accommodationId = parseInt(params.get('accommodationId')!);
+        this.accommodation = await this.as.getAccommodation(accommodationId);
+      })
   }
 
   ngOnInit(): void {
-  }
 
+    /*this.route.paramMap.subscribe(async params => {
+      const accommodationId = parseInt(params.get('accommodationId')!);
+      this.accommodationId = accommodationId;
+      this.accommodation = await this.as.getAccommodation(this.accommodationId);
+    })*/
+  }
 }

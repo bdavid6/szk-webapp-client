@@ -1,0 +1,47 @@
+::ng-deep .normal {
+    border: 1px solid rgba(0, 0, 0, 0.300);
+    background-color: #F5F5F5;
+    color: #3F51B5;
+    font-weight: 500;
+}
+
+::ng-deep .error {
+    width: 300px;
+    border: 1px solid rgba(0, 0, 0, 0.300);
+    background-color: #F5F5F5;
+    color: red;
+    font-weight: 500;
+}
+
+.grid {
+    max-width: 900px;
+    min-width: 900px;
+}
+
+.login {
+    display: inline-block;
+    max-width: 200px;
+    min-width: 200px;
+    vertical-align: bottom;
+    margin-left: 240px;
+    margin-bottom: 100px;
+}
+
+.divider {
+    display: inline-block;
+}
+
+mat-divider {
+    color: gray;
+    height: 400px;
+    width: 3px;
+    margin-left: 120px;
+}
+
+.register {
+    max-width: 200px;
+    min-width: 200px;
+    vertical-align: top;
+    display: inline-block;
+    margin-left: 120px;
+}

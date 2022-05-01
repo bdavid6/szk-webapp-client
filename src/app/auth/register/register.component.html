@@ -1,1 +1,62 @@
-<p>register works!</p>
+<h1>Regisztráció</h1>
+
+<form [formGroup]="form" (submit)="submitRegister()">
+  <mat-form-field appearance="fill">
+    <mat-label>Felhasználó név</mat-label>
+    <input
+      required
+      minlength="5"
+      matInput
+      type="text"
+      name="username"
+      formControlName="username"
+    />
+    <mat-error *ngIf="username.invalid">
+        {{ username.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Jelszó</mat-label>
+    <input
+      required
+      minlength="5"
+      matInput
+      type="password"
+      name="password"
+      formControlName="password"
+    />
+    <mat-error *ngIf="password.invalid">
+        {{ password.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Név</mat-label>
+    <input
+      required
+      matInput
+      type="name"
+      name="name"
+      formControlName="name"
+    />
+    <mat-error *ngIf="name.invalid">
+        {{ name.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>E-mail cím</mat-label>
+    <input
+      required
+      email="true"
+      matInput
+      type="e_mail"
+      name="e_mail"
+      formControlName="e_mail"
+    />
+    <mat-error *ngIf="e_mail.invalid">
+        {{ e_mail.errors! | appErrors }}
+      </mat-error>
+  </mat-form-field>
+  <div class="buttons">
+    <button mat-raised-button color="primary">Regisztráció</button>
+  </div>
+</form>

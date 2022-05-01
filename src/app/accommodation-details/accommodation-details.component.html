@@ -1,4 +1,6 @@
-{{ accommodation.id }}
+<div *ngIf="accommodation">
+    {{accommodation!.id}}
+</div>
 <!--<div class="grid">
 <mat-form-field appearance="fill" class="example-form-field">
     <mat-date-range-input [formGroup]="reserveForm" (ngSubmit)="submitReserve( acco )" [rangePicker]="rangePicker"

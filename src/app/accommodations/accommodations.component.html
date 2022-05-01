@@ -19,11 +19,11 @@
     </mat-card-content>
     <p class="actions">
       <!--<button mat-button routerLink="/accommodations/{{acco.id}}">MEGTEKINTÉS</button>-->
-      <button *ngIf="isLoggedIn" mat-button [routerLink]="['/', 'accommodations', 'id', acco.id]">MEGTEKINTÉS</button>
-      <button *ngIf="!isLoggedIn" mat-button class="disabled" disabled>MEGTEKINTÉS</button>
+      <button *ngIf="isLoggedIn" mat-button [routerLink]="['../../accommodations/' + acco.id]">LEFOGLALÁS</button>
+      <button *ngIf="!isLoggedIn" mat-button class="disabled" disabled>LEFOGLALÁS</button>
     </p>
   </mat-card>
-  <mat-paginator *ngIf="this.as.allAccommodations" [length]="this.as.allAccommodations" [pageSize]="3" [hidePageSize]="true" (page)="getPageData($event)"></mat-paginator>
+  <mat-paginator *ngIf="this.as.countAccommodations" [length]="this.as.countAccommodations" [pageSize]="3" [hidePageSize]="true" (page)="getPageData($event)"></mat-paginator>
   <!--<div *ngIf="!accommodations || accommodations.length === 0">
     <p class="notfound">Nem található szállás.</p>
   </div>-->

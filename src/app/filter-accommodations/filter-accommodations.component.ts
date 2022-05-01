@@ -6,11 +6,11 @@ import { AccommodationService } from '../core/services/accommodation.service';
 import { AuthService } from '../core/services/auth.service';
 
 @Component({
-  selector: 'app-accommodations',
-  templateUrl: './accommodations.component.html',
-  styleUrls: ['./accommodations.component.scss']
+  selector: 'app-filter-accommodations',
+  templateUrl: './filter-accommodations.component.html',
+  styleUrls: ['./filter-accommodations.component.scss']
 })
-export class AccommodationsComponent implements OnInit {
+export class FilterAccommodationsComponent implements OnInit {
 
   accommodations!: Promise<Accommodation[]>;
 
@@ -35,7 +35,9 @@ export class AccommodationsComponent implements OnInit {
   ) {
     //setTimeout(() => {
       route.paramMap.subscribe(params => {
-        this.accommodations = this.as.getAccommodations(this.page);
+        const filterText = params.get('filterText')!;
+        this.filterText = filterText;
+        this.accommodations = this.as.getFilteredAccommodations(this.page, this.filterText);
       })
     //}, 300);
   }
@@ -45,7 +47,8 @@ export class AccommodationsComponent implements OnInit {
 
   getPageData(e: PageEvent) {
     this.page = e.pageIndex + 1;
-    this.router.navigate(["/search/" + this.page])
+    this.router.navigate(["/search/filter/" + this.filterText + '/' + this.page])
     window.scrollTo(0, 0);
   }
+
 }

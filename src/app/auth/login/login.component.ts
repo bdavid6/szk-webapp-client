@@ -39,8 +39,6 @@ export class LoginComponent implements OnInit {
       return;
     }
     await this.ahs.login(this.form.value);
-    this.ns.showNotification(0, "Sikeres bejelentkezés", 1000);
-    this.router.navigate(['']);
   }
 
 }

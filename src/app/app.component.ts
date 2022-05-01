@@ -25,6 +25,6 @@ export class AppComponent {
 
   logout(): void {
     this.ahs.logout();
-    this.router.navigate(['']);
+    this.router.navigate(['auth']);
   }
 }

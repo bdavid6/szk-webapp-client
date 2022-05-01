@@ -14,6 +14,9 @@ export class ErrorsPipe implements PipeTransform {
       return `Mimumum
         ${value.minlength.requiredLength} karakter hosszú legyen.`;
     }
+    if (value.email) {
+      return 'Hiányzó karakter @...';
+    }
     return JSON.stringify(value);
   }
 
