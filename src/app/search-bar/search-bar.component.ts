@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccommodationService } from '../core/services/accommodation.service';
 import { AuthService } from '../core/services/auth.service';
 import { NotificationService } from '../core/services/notification.service';
+import { SearchService } from '../core/services/search.service';
 
 @Component({
   selector: 'app-search-bar',
@@ -19,7 +18,7 @@ export class SearchBarComponent implements OnInit {
   private idArray: number[] = [];
 
   constructor(
-    private as: AccommodationService,
+    private ss: SearchService,
     private ahs: AuthService,
     private ns: NotificationService,
     private router: Router
@@ -38,9 +37,9 @@ export class SearchBarComponent implements OnInit {
 
   async randomId(): Promise<void> {
 
-    this.as.savedPage = -3;
+    this.ss.savedPage = -3;
     if (this.ahs.isLoggedIn) {
-      this.idArray = await this.as.getIdArray();
+      this.idArray = await this.ss.getIdArray();
       length = this.idArray.length;
 
       if (length == 0) {
@@ -67,11 +66,11 @@ export class SearchBarComponent implements OnInit {
 
     const filter = this.searchText.charAt(0).toUpperCase() + this.searchText.slice(1).toLowerCase();
 
-    this.as.savedPage = -3;
+    this.ss.savedPage = -3;
     if (this.ahs.isLoggedIn) {
 
       if (filter) {
-        this.idArray = await this.as.getIdArrayWithFilter(filter);
+        this.idArray = await this.ss.getIdArrayWithFilter(filter);
         length = this.idArray.length;
 
         if (length == 0) {

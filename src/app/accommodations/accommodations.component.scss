@@ -4,12 +4,14 @@
 }
 
 .accommodation-card {
-    max-width: 100%;
+    //max-width: 100%;
+    max-width: 80%;
+    margin: auto;
     min-width: 680px;
     height: 250px;
-    margin-left: 18%;
+    //margin-left: 18%;
+    
     margin-bottom: 8px;
-    //overflow: hidden;
     border: 1px solid rgba(0, 0, 0, 0.400);
     background-color: #F5F5F5;
 }

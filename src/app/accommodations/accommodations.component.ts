@@ -2,9 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Accommodation } from '../core/interfaces/accommodation';
-import { AccommodationService } from '../core/services/accommodation.service';
 import { AuthService } from '../core/services/auth.service';
 import { NotificationService } from '../core/services/notification.service';
+import { SearchService } from '../core/services/search.service';
 
 @Component({
   selector: 'app-accommodations',
@@ -29,7 +29,7 @@ export class AccommodationsComponent implements OnInit {
   }
 
   constructor(
-    public as: AccommodationService,
+    public ss: SearchService,
     private ahs: AuthService,
     private route: ActivatedRoute,
     private router: Router,
@@ -41,7 +41,7 @@ export class AccommodationsComponent implements OnInit {
       .subscribe(async params => {
         this.filterText = params.filter;
         this.page = params.page;
-        this.accommodations = this.as.getAccommodations(this.page, this.filterText);
+        this.accommodations = this.ss.getAccommodations(this.page, this.filterText);
         if((await this.accommodations).length == 0) {
           this.router.navigate(['/']);
           this.ns.showNotification(1, "Nem található ilyen szállás", 1200);
@@ -58,9 +58,9 @@ export class AccommodationsComponent implements OnInit {
   }
 
   setPaginator(): void {
-    if(this.as.savedPage == -1) {
+    if(this.ss.savedPage == -1) {
       this.paginator.pageIndex = this.page -1;
-      this.as.savedPage = -2;
+      this.ss.savedPage = -2;
     } else {
       if(this.page == 1) {
         this.paginator.firstPage();
@@ -69,9 +69,9 @@ export class AccommodationsComponent implements OnInit {
   }
 
   saveUrl(): void {
-    this.as.savedPage = this.page;
+    this.ss.savedPage = this.page;
     if(this.filterText) {
-      this.as.savedFilter = this.filterText;
+      this.ss.savedFilter = this.filterText;
     }
   }
 

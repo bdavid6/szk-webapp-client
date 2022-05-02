@@ -1,9 +1,9 @@
 <div *ngIf="accommodation">
     {{accommodation!.id}}
 </div>
-<button *ngIf="this.as.savedPage != -3" mat-button class="back-button" (click)="resetUrl()" [routerLink]="['/search']"
-    [queryParams]="{filter: this.as.savedFilter ,page: currentPage}">Vissza</button>
-<button *ngIf="this.as.savedPage == -3" mat-button class="back-button" [routerLink]="['/search']">Vissza</button>
+<button *ngIf="this.ss.savedPage != -3" mat-button class="back-button" (click)="resetUrl()" [routerLink]="['/search']"
+    [queryParams]="{filter: this.ss.savedFilter ,page: currentPage}">Vissza</button>
+<button *ngIf="this.ss.savedPage == -3" mat-button class="back-button" [routerLink]="['/search']">Vissza</button>
 <!--<div class="grid">
 <mat-form-field appearance="fill" class="example-form-field">
     <mat-date-range-input [formGroup]="reserveForm" (ngSubmit)="submitReserve( acco )" [rangePicker]="rangePicker"

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Accommodation } from '../core/interfaces/accommodation';
 import { Reservation } from '../core/interfaces/reservation';
 import { AccommodationService } from '../core/services/accommodation.service';
+import { SearchService } from '../core/services/search.service';
 
 @Component({
   selector: 'app-accommodation-details',
@@ -17,27 +18,23 @@ export class AccommodationDetailsComponent implements OnInit {
 
   constructor(
     public as: AccommodationService,
+    public ss: SearchService,
     private route: ActivatedRoute,
   ) {
     this.route.paramMap.subscribe(async params => {
       const accommodationId = parseInt(params.get('accommodationId')!);
       this.accommodation = await this.as.getAccommodation(accommodationId);
     })
-    this.currentPage = as.savedPage;
+    this.currentPage = ss.savedPage;
   }
 
   ngOnInit(): void {
 
-    /*this.route.paramMap.subscribe(async params => {
-      const accommodationId = parseInt(params.get('accommodationId')!);
-      this.accommodationId = accommodationId;
-      this.accommodation = await this.as.getAccommodation(this.accommodationId);
-    })*/
   }
 
   resetUrl(): void {
-    this.as.savedPage = -1;
-    this.as.savedFilter = '';
+    this.ss.savedPage = -1;
+    this.ss.savedFilter = '';
   }
 
 
