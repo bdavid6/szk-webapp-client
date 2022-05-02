@@ -32,8 +32,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ErrorsPipe } from './core/errors.pipe';
 import { AuthInterceptor } from './core/auth.interceptor';
-import { FilterAccommodationsComponent } from './filter-accommodations/filter-accommodations.component';
 import { AuthComponent } from './auth/auth/auth.component';
+import { ReservedAccommodationsComponent } from './reserved-accommodations/reserved-accommodations.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +47,8 @@ import { AuthComponent } from './auth/auth/auth.component';
     LoginComponent,
     RegisterComponent,
     ErrorsPipe,
-    FilterAccommodationsComponent,
     AuthComponent,
+    ReservedAccommodationsComponent,
   ],
   imports: [
     BrowserModule,

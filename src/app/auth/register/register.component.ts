@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators, FormGroupDirective } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationService } from 'src/app/core/services/notification.service';
@@ -11,7 +11,7 @@ import { NotificationService } from 'src/app/core/services/notification.service'
 })
 export class RegisterComponent implements OnInit {
 
-  form: FormGroup = this.fb.group({
+  registerForm: FormGroup = this.fb.group({
     username: [null],
     password: [null],
     name: [null],
@@ -19,19 +19,19 @@ export class RegisterComponent implements OnInit {
   });
 
   get username(): AbstractControl {
-    return this.form.get('username') as AbstractControl;
+    return this.registerForm.get('username') as AbstractControl;
   }
 
   get password(): AbstractControl {
-    return this.form.get('password') as AbstractControl;
+    return this.registerForm.get('password') as AbstractControl;
   }
 
   get name(): AbstractControl {
-    return this.form.get('name') as AbstractControl;
+    return this.registerForm.get('name') as AbstractControl;
   }
 
   get e_mail(): AbstractControl {
-    return this.form.get('e_mail') as AbstractControl;
+    return this.registerForm.get('e_mail') as AbstractControl;
   }
 
   constructor(
@@ -43,10 +43,14 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async submitRegister(): Promise<void> {
-    this.form.markAllAsTouched();
-    if (this.form.valid) {
-      await this.ahs.register(this.form.value);
+  async submitRegister(formDirective: FormGroupDirective): Promise<void> {
+    this.registerForm.markAllAsTouched();
+    if (this.registerForm.valid) {
+      await this.ahs.register(this.registerForm.value);
+      
+      //clear
+      formDirective.resetForm();
+      this.registerForm.reset();
 
     } else {
       return;

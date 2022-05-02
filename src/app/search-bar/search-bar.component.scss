@@ -42,6 +42,34 @@
     text-indent: -7px;
 }
 
+.search-button-alternative-slim1 {
+    max-width: 195px;
+    min-width: 195px;
+    margin-left: 1px;
+    height: 35px;
+    background-color: #3F51B5;
+    border: 1px solid black;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+    color: white;
+    font-size: medium;
+    text-indent: -7px;
+    margin-bottom: 35px;
+}
+
+.search-button-alternative-slim2 {
+    max-width: 195px;
+    min-width: 195px;
+    height: 35px;
+    background-color: #3F51B5;
+    border: 1px solid black;
+    box-shadow: 10px 10px 10px rgb(0, 0, 0);
+    color: white;
+    font-size: medium;
+    text-indent: -7px;
+    margin-top: 35px;
+    margin-left: -195px;
+}
+
 input {
     max-width: 50%;
     min-width: 300px;

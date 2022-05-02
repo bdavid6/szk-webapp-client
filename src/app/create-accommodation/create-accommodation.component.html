@@ -2,32 +2,73 @@
 
 <form mat-dialog-content [formGroup]="accommodationForm" (ngSubmit)="submitCreate()">
   <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Név</mat-label>
-    <input matInput type="text" name="name" required minlength="3" formControlName="name" />
+    <mat-label>Szállás neve</mat-label>
+    <input 
+    matInput
+    type="text" 
+    name="name" 
+    formControlName="name" />
     <mat-error *ngIf="name.invalid">
       {{ name.errors! | appErrors }}
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Hely</mat-label>
-    <input matInput type="text" name="place" required minlength="3" formControlName="place" />
+    <input 
+    matInput 
+    type="text" 
+    name="place" 
+    formControlName="place" />
     <mat-error *ngIf="place.invalid">
       {{ place.errors! | appErrors }}
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
     <mat-label>Hosszabb leírás</mat-label>
-    <textarea matInput name="label" required minlength="20" formControlName="label"></textarea>
-    <mat-error *ngIf="label.invalid">
-      {{ label.errors! | appErrors }}
+    <textarea 
+    matInput 
+    name="description" 
+    formControlName="description"></textarea>
+    <mat-error *ngIf="description.invalid">
+      {{ description.errors! | appErrors }}
     </mat-error>
   </mat-form-field>
   <mat-form-field class="full-width" appearance="fill">
-    <mat-label>Kép feltöltése</mat-label>
-    <input matInput type="text" name="mainImage" required minlength="3" formControlName="mainImage" />
-    <!--<mat-error *ngIf="name.invalid">
-      {{ name.errors! | appErrors }}
-    </mat-error>-->
+    <mat-label>További információk</mat-label>
+    <textarea 
+    matInput 
+    name="technical_description" 
+    formControlName="technical_description"></textarea>
+    <mat-error *ngIf="technical_description.invalid">
+      {{ technical_description.errors! | appErrors }}
+    </mat-error>
+  </mat-form-field>
+  <p>Árak éjszakánként</p>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Felnőtt</mat-label>
+    <input 
+    matInput
+    type="number"
+    name="adult_price" 
+    step="500"
+    min="0"
+    formControlName="adult_price" />
+    <mat-error *ngIf="adult_price.invalid">
+      {{ adult_price.errors! | appErrors }}
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Gyermek</mat-label>
+    <input 
+    matInput 
+    type="number"
+    name="child_price"
+    step="500"
+    min="0"
+    formControlName="child_price" />
+    <mat-error *ngIf="child_price.invalid">
+      {{ child_price.errors! | appErrors }}
+    </mat-error>
   </mat-form-field>
 
 </form>

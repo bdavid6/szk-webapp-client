@@ -82,7 +82,7 @@ export class AuthService {
           this.router.navigate(['auth']);
         } else {
           this.ns.showNotification(0, "Sikeres regisztráció", 1200);
-          this.router.navigate(['']);
+          this.router.navigate(['auth']);
         }
       },
       );

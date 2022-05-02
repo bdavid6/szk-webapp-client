@@ -1,6 +1,6 @@
 <h1>Regisztráció</h1>
 
-<form [formGroup]="form" (submit)="submitRegister()">
+<form #formDirective="ngForm" [formGroup]="registerForm" (submit)="submitRegister(formDirective)">
   <mat-form-field appearance="fill">
     <mat-label>Felhasználó név</mat-label>
     <input

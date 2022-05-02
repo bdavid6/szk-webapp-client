@@ -12,10 +12,10 @@
             <button mat-button [matMenuTriggerFor]="partnermenu" class="partner-menu-button">Partnereknek</button>
             <mat-menu #partnermenu="matMenu">
                 <button mat-menu-item routerLink="/new-accommodation">Új szállás felvétele </button>
-                <button mat-menu-item>Szállások kezelése</button>
+                <button mat-menu-item >Szállások kezelése</button>
                 <button mat-menu-item routerLink="/information">Információk</button>
             </mat-menu>
-            <button mat-button>Lefoglalt szállások</button>
+            <button mat-button routerLink="/reserved-accommodations">Lefoglalt szállások</button>
             <button *ngIf="!isLoggedIn" mat-button routerLink="/auth">Bejelentkezés</button>
             <button *ngIf="isLoggedIn" mat-button (click)="logout()">Kijelentkezés</button>
         </div>

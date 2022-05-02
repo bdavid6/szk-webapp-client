@@ -38,6 +38,7 @@ export class SearchBarComponent implements OnInit {
 
   async randomId(): Promise<void> {
 
+    this.as.savedPage = -3;
     if (this.ahs.isLoggedIn) {
       this.idArray = await this.as.getIdArray();
       length = this.idArray.length;
@@ -62,5 +63,40 @@ export class SearchBarComponent implements OnInit {
     }
   }
 
+  async randomIdWithFilter(): Promise<void> {
+
+    const filter = this.searchText.charAt(0).toUpperCase() + this.searchText.slice(1).toLowerCase();
+
+    this.as.savedPage = -3;
+    if (this.ahs.isLoggedIn) {
+
+      if (filter) {
+        this.idArray = await this.as.getIdArrayWithFilter(filter);
+        length = this.idArray.length;
+
+        if (length == 0) {
+          this.router.navigate(['/']);
+          console.log("elso")
+        } else if (length == 1) {
+          this.router.navigate(['/accommodations/' + this.idArray[0]]);
+          console.log("masodik")
+        } else {
+          let x = Math.floor(Math.random() * length);
+          while (this.random == x) {
+            x = Math.floor(Math.random() * length);
+          }
+          this.random = x;
+          this.router.navigate(['/accommodations/' + this.idArray[x]]);
+          console.log("harmadik")
+        }
+
+      } else {
+        this.ns.showNotification(1, "Adjon meg egy úticélt", 1200);
+      }
+    } else {
+      this.ns.showNotification(1, "Bejelentkezés szükséges", 1200);
+    }
+    this.clearSearch();
+  }
 
 }

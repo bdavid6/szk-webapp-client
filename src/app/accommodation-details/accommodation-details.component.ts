@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Accommodation } from '../core/interfaces/accommodation';
+import { Reservation } from '../core/interfaces/reservation';
 import { AccommodationService } from '../core/services/accommodation.service';
 
 @Component({
@@ -12,14 +13,17 @@ export class AccommodationDetailsComponent implements OnInit {
 
   accommodation?: Accommodation;
 
+  currentPage!: number;
+
   constructor(
-    private as: AccommodationService,
+    public as: AccommodationService,
     private route: ActivatedRoute,
   ) {
-      this.route.paramMap.subscribe(async params => {
-        const accommodationId = parseInt(params.get('accommodationId')!);
-        this.accommodation = await this.as.getAccommodation(accommodationId);
-      })
+    this.route.paramMap.subscribe(async params => {
+      const accommodationId = parseInt(params.get('accommodationId')!);
+      this.accommodation = await this.as.getAccommodation(accommodationId);
+    })
+    this.currentPage = as.savedPage;
   }
 
   ngOnInit(): void {
@@ -30,4 +34,16 @@ export class AccommodationDetailsComponent implements OnInit {
       this.accommodation = await this.as.getAccommodation(this.accommodationId);
     })*/
   }
+
+  resetUrl(): void {
+    this.as.savedPage = -1;
+    this.as.savedFilter = '';
+  }
+
+
+  async submitReserve(): Promise<void> {
+
+    await this.as.reserveAccommodation('elso', 'masodik', this.accommodation!.id);
+  }
+
 }
