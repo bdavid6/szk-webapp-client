@@ -7,7 +7,7 @@
     //max-width: 100%;
     max-width: 80%;
     margin: auto;
-    min-width: 680px;
+    min-width: 880px;
     height: 250px;
     //margin-left: 18%;
     
@@ -30,6 +30,7 @@
 }
 
 .mat-card-title {
+    min-width: 580px;
     margin-left: -16px;
     font-size: x-large;
 }
@@ -100,6 +101,10 @@ button {
     background-color: #F5F5F5;
     color:red;
     font-weight: 500;
+}
+
+::ng-deep .mat-tooltip {
+    transform: scale(1.5) !important;
 }
 
 mat-tooltip-component {

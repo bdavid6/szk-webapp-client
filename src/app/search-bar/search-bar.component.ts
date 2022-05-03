@@ -22,7 +22,9 @@ export class SearchBarComponent implements OnInit {
     private ahs: AuthService,
     private ns: NotificationService,
     private router: Router
-  ) { }
+  ) { 
+    console.log("Hello")
+  }
 
   ngOnInit(): void {
   }

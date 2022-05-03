@@ -6,7 +6,7 @@
 .accommodation-card {
     margin: auto;
     max-width: 80%;
-    min-width: 680px;
+    min-width: 880px;
     height: 250px;
     margin-bottom: 8px;
     //overflow: hidden;
@@ -28,6 +28,7 @@
 }
 
 .mat-card-title {
+    min-width: 580px;
     margin-left: -16px;
     font-size: x-large;
 }
@@ -59,21 +60,6 @@ button {
     color: white;
 }
 
-.disabled {
-    background-color: #F5F5F5;
-}
-
-.mat-toolbar {
-    max-width: 155px;
-    min-width: 155px;
-    height: 600px;
-    border: 2px solid #3F51B5;
-    border-radius: 5px;
-    box-shadow: 0px 1px #94a1e7;
-    float: left;
-    overflow: auto;
-}
-
 .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: 0 2px 1px -1px rgba(0,0,0,1), 
                 0 1px 1px 0 rgba(0,0,0,1), 
@@ -98,8 +84,4 @@ button {
     background-color: #F5F5F5;
     color:red;
     font-weight: 500;
-}
-
-mat-tooltip-component {
-    transform: scale(1.5);
 }

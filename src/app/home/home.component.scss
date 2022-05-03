@@ -38,14 +38,31 @@ b {
     font-weight: 500;
 }
 
-.alt-search {
+.title {
     margin-top: 100px;
-    max-width: 100%;
-    min-width: 880px;
-    height: 600px;
+    font-weight: 500;
+    font-size: xx-large;
 }
 
-.mat-grid-tile {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.alt-search {
+    margin-top: 30px;
+    max-width: 100%;
+    min-width: 880px;
+    min-height: 300px;
+}
+
+mat-grid-list {
+    max-width: 100%;
+    min-width: 880px;
+}
+
+mat-grid-tile {
+    max-width: 100%;
+    height: auto;
+    border: 15px solid white;
+    cursor: pointer;
+}
+
+mat-grid-tile-footer {
+    font-size: x-large;
 }
