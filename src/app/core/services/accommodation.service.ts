@@ -54,7 +54,7 @@ export class AccommodationService {
       );
   }
 
-  async deleteReservation(accommodationId: number): Promise<void> {
+  async deleteReservationByAccommodation(accommodationId: number): Promise<void> {
     await this.http.delete('/api/accommodations/' + accommodationId).toPromise()
     /*await this.http
       .delete<Reservation>('/api/accommodations/' + accommodationId)
@@ -73,12 +73,36 @@ export class AccommodationService {
 
   async getReservedAccommodations(): Promise<Accommodation[]> {
 
+    this.accommodations = await this.http.get('/api/reservations').toPromise()
+      .catch((error: any) => {
+        console.log(error);
+      }) as Accommodation[];
+
+    return this.accommodations;
+  }
+
+  async getMyAccommodations(): Promise<Accommodation[]> {
+
     this.accommodations = await this.http.get('/api/accommodations').toPromise()
       .catch((error: any) => {
         console.log(error);
       }) as Accommodation[];
 
     return this.accommodations;
+  }
+
+  async changeStatus(accommodationId: number): Promise<void> {
+    await this.http.put('/api/accommodations/' + accommodationId, '').toPromise()
+      .catch((error: any) => {
+
+        if (error.status == 409) {
+          console.log(error);
+          this.ns.showNotification(1, "Nem sikerült a változtatás", 1200);
+        } else {
+          this.ns.showNotification(0, "Sikeres státusz változtatás", 1200);
+        }
+      },
+      );
   }
 }
 

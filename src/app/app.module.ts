@@ -17,6 +17,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +36,7 @@ import { ErrorsPipe } from './core/errors.pipe';
 import { AuthInterceptor } from './core/auth.interceptor';
 import { AuthComponent } from './auth/auth/auth.component';
 import { ReservedAccommodationsComponent } from './reserved-accommodations/reserved-accommodations.component';
+import { ManagementAccommodationComponent } from './management-accommodation/management-accommodation.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { ReservedAccommodationsComponent } from './reserved-accommodations/reser
     ErrorsPipe,
     AuthComponent,
     ReservedAccommodationsComponent,
+    ManagementAccommodationComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,9 @@ import { ReservedAccommodationsComponent } from './reserved-accommodations/reser
     FormsModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule,
+    MatSelectModule
   ],
   providers: [
     {

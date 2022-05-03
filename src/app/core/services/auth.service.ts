@@ -11,10 +11,12 @@ export interface LoginRequest {
 
 export interface LoginResponse extends User {
   token: string;
+  role: Role;
 }
 
 const UserStorageKey = 'user';
 const TokenStorageKey = 'token';
+const RoleStorageKey = 'role';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,16 @@ export class AuthService {
     return this.currentUser as User;
   }
 
+  get role(): Role {
+    if (!this.currentRole) {
+      this.currentRole = sessionStorage.getItem(RoleStorageKey) as Role;
+    }
+    return this.currentRole as Role;
+  }
+
   private currentToken: string | null = null;
+
+  private currentRole: Role | null = null;
 
   get token(): string {
     if (!this.currentToken) {
@@ -96,16 +107,20 @@ export class AuthService {
     if (user) {
       sessionStorage.setItem(TokenStorageKey, user.token);
       sessionStorage.setItem(UserStorageKey, JSON.stringify(user));
+      sessionStorage.setItem(RoleStorageKey, user.role);
       document.cookie = `${TokenStorageKey}=${user.token}`;
       document.cookie = `${UserStorageKey}=${JSON.stringify(user)}`;
+      document.cookie = `${RoleStorageKey}=${user.role}`;
 
       this.ns.showNotification(0, "Sikeres bejelentkezés", 1200);
       this.router.navigate(['']);
     } else {
       sessionStorage.removeItem(TokenStorageKey);
       sessionStorage.removeItem(UserStorageKey);
+      sessionStorage.removeItem(RoleStorageKey);
     }
     this.currentUser = user;
     this.currentToken = user?.token || null;
+    this.currentRole = user?.role || null;
   }
 }

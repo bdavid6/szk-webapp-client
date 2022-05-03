@@ -1,0 +1,51 @@
+<h1><b>Kiadott szállásaim és foglalások</b></h1>
+<div class="lines">
+  <p>&#60;&nbsp;itt tudja megtekinteni az összes szállását, válasszon ki egyet <br> és
+    jobb oldalt már meg is jelennek a hozzá tartozó foglalások&nbsp;&#62;</p>
+</div>
+<mat-selection-list #list [multiple]="false">
+  <mat-list-option (click)="onChange(acco)" *ngFor="let acco of (accommodations | async)" [value]="acco">
+    {{acco.name}} &nbsp; ({{acco.place}})
+    <mat-icon *ngIf="acco.active" class="active-on-icon" aria-hidden="false" aria-label="Active icon">done</mat-icon>
+    <mat-icon *ngIf="!acco.active" class="active-off-icon" aria-hidden="false" aria-label="Active icon">close</mat-icon>
+  </mat-list-option>
+</mat-selection-list>
+<div class="table">
+  <table>
+    <tr>
+      <th class="date">Érkezés</th>
+      <th class="date">Távozás</th>
+      <th class="num">Szobák</th>
+      <th class="longg">Személyek száma</th>
+      <th class="icon">Törlés</th>
+    </tr>
+
+    <tr *ngFor="let reservation of (reservations | async)">
+      <td class="date">{{reservation.start_date}}</td>
+      <td class="date">{{reservation.end_date}}</td>
+      <td class="num">1</td>
+      <td class="longg">2 felnőtt, 3 gyemek&nbsp;&nbsp;&nbsp;(5)</td>
+      <td class="icon">
+        <mat-icon class="delete-icon" (click)="deleteSubmit(reservation.id)" aria-hidden="false"
+          aria-label="Delete icon">event busy</mat-icon>
+        <!--<mat-icon (click)="openDialog()" aria-hidden="false" aria-label="Delete icon">event busy</mat-icon>-->
+      </td>
+    </tr>
+  </table>
+</div>
+<h1><b>Szállások láthatatlanná tétele</b></h1>
+<div class="lines">
+  <p>&#60;&nbsp;itt tudja szükség esetén inaktiválni a szállását (vagy vissza aktiválni), <br>
+    a fenti ikonok mutatják a szállások mostani státuszát &nbsp;&#62;</p>
+</div>
+<mat-form-field appearance="fill">
+  <mat-select [formControl]="statusControl" required>
+    <option value="" selected></option>
+    <mat-option *ngFor="let acco of (accommodations | async)" [value]="acco">
+      {{acco.name}}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="statusControl.hasError('required')"></mat-error>
+  <mat-hint>{{statusControl.value?.place}}</mat-hint>
+</mat-form-field>
+<button (click)="changeStatus(statusControl.value?.id)" mat-raised-button color="primary">Státusz változtatása</button>

@@ -14,19 +14,9 @@ export class ReservedAccommodationsComponent implements OnInit {
 
   accommodations!: Promise<Accommodation[]>;
 
-  get isLoggedIn(): boolean {
-    return this.ahs.isLoggedIn;
-  }
-
-  get isAdmin(): boolean {
-    return this.ahs.isAdmin;
-  }
-
   constructor(
     public as: AccommodationService,
-    private ahs: AuthService,
     private router: Router,
-    private ns: NotificationService
   ) {
     this.accommodations = this.as.getReservedAccommodations();
   }
@@ -35,7 +25,7 @@ export class ReservedAccommodationsComponent implements OnInit {
   }
 
   async resignSubmit(id: number): Promise<void> {
-    await this.as.deleteReservation(id);
+    await this.as.deleteReservationByAccommodation(id);
 
     //reload page
     const currentUrl = this.router.url;

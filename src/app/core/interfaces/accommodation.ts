@@ -10,7 +10,7 @@ export interface Accommodation {
     technical_description: string;
     adult_price: number;
     child_price: number;
-    reserved: boolean;
+    active: boolean;
     confirmed: boolean;
     tags: Tag[]; 
     user: User; //id
